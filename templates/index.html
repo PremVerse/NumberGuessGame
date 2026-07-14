@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Guess The Number</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🎯 Guess The Number</h1>
+
+        <p>I have selected a random number between <b>1 and 100</b>.</p>
+
+        <h3>Select Difficulty</h3>
+
+        <div class="difficulty">
+
+            <button onclick="setDifficulty('easy')" class="easy">
+                🟢 Easy (10 Attempts)
+            </button>
+
+            <button onclick="setDifficulty('medium')" class="medium">
+                🟡 Medium (7 Attempts)
+            </button>
+
+            <button onclick="setDifficulty('hard')" class="hard">
+                🔴 Hard (5 Attempts)
+            </button>
+
+        </div>
+
+        <input
+            type="number"
+            id="guess"
+            placeholder="Enter your guess">
+
+        <button onclick="checkGuess()">
+            Guess
+        </button>
+
+        <p>
+            Attempts:
+            <span id="attempts">0</span> /
+            <span id="maxAttempts">10</span>
+        </p>
+
+        <p id="message" class="info">
+            Start Guessing...
+        </p>
+
+        <button onclick="restartGame()">
+            🔄 Restart Game
+        </button>
+
+        <div class="footer">
+            Good Luck 🍀
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
