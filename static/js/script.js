@@ -1,3 +1,19 @@
+function playClick(){
+    document.getElementById("clickSound").play();
+}
+
+function playWin(){
+    document.getElementById("winSound").play();
+}
+
+function playWrong(){
+    document.getElementById("wrongSound").play();
+}
+
+function playGameOver(){
+    document.getElementById("gameOverSound").play();
+}
+
 // Random number
 let randomNumber = Math.floor(Math.random() * 100) + 1;
 
@@ -31,6 +47,7 @@ function setDifficulty(level) {
 
 // Check Guess
 function checkGuess() {
+    playClick();
 
     if (gameOver) return;
 
@@ -46,19 +63,33 @@ function checkGuess() {
 
     document.getElementById("attempts").innerHTML = attempts;
 
-    if (guess === randomNumber) {
+    if(guess===randomNumber){
 
-        document.getElementById("message").innerHTML =
-            "🎉 Congratulations! You guessed correctly!";
+    playWin();    
 
-        document.getElementById("message").className = "success";
+    const msg = document.getElementById("message");
 
-        gameOver = true;
+    msg.innerHTML =
+    "🎉 Congratulations! You guessed the correct number.";
 
-        return;
-    }
+    msg.className =
+    "success animate__animated animate__tada";
+
+    // 🎊 Confetti Effect
+    confetti({
+        particleCount:200,
+        spread:100,
+        origin:{y:0.6}
+    });
+
+    gameOver = true;
+
+    return;
+}
 
     if (attempts >= maxAttempts) {
+
+        playGameOver();
 
         document.getElementById("message").innerHTML =
             "❌ Game Over! Number was <b>" + randomNumber + "</b>";
@@ -72,6 +103,8 @@ function checkGuess() {
 
     if (guess < randomNumber) {
 
+        playWrong();
+
         document.getElementById("message").innerHTML =
             "📈 Too Low!";
 
@@ -79,6 +112,8 @@ function checkGuess() {
     }
 
     else {
+
+        playWrong();
 
         document.getElementById("message").innerHTML =
             "📉 Too High!";

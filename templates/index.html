@@ -4,12 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎯 Guess The Number</title>
+    <title>Guess The Number Game</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Animate.css -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- Your CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
+
+    <div class="bubbles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
 
     <div class="container">
 
@@ -64,7 +83,20 @@
 
     </div>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<!-- Audio Files -->
+<audio id="clickSound" src="{{ url_for('static', filename='sounds/click.mp3') }}"></audio>
+
+<audio id="winSound" src="{{ url_for('static', filename='sounds/win.mp3') }}"></audio>
+
+<audio id="wrongSound" src="{{ url_for('static', filename='sounds/wrong.mp3') }}"></audio>
+
+<audio id="gameOverSound" src="{{ url_for('static', filename='sounds/gameover.mp3') }}"></audio>
+
+<!-- Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<!-- Your JavaScript -->
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 
